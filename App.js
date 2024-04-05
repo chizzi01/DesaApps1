@@ -35,7 +35,7 @@ const App = () => {
     <View style={[styles.container, styles.navigationContainer]}>
       <Link to="/" onPress={() => drawer.current.closeDrawer()}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Ionicons name="home" size={30} color="grey" />
+          <Ionicons name="home" size={30} color="#57B27E" />
           <Text style={styles.link}>Home</Text>
         </View>
       </Link>
@@ -74,6 +74,16 @@ const App = () => {
     </View>
   );
 
+  const usuario = {
+    nombre: 'Juan',
+    apellido: 'Perez',
+    email: 'juanperez@gmail.com',
+    password: 'pepito123',
+    dni: '12345678',
+    tipo: 'vecino',
+    validado: true,
+  };
+
   const AppBarTitle = () => {
     const location = useLocation();
     let appBarColor;
@@ -81,7 +91,7 @@ const App = () => {
     
     switch (location.pathname) {
       case '/':
-        appBarColor = 'grey';
+        appBarColor = '#57B27E';
         titulo = 'Home';
         break;
       case '/comercios':
@@ -138,7 +148,7 @@ const App = () => {
               <Route path="/servicios" element={<Servicios />} />
               <Route path="/reclamos" element={<Reclamos />} /> // Asegúrate de que el componente Reclamos está correctamente definido y exportado
               <Route path="/denuncias" element={<Denuncias />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/login" element={<Login user={usuario} />} />
             </Routes>
           </View>
         </DrawerLayoutAndroid>
@@ -187,6 +197,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: 2, // Agrega un borde de 1 píxel en el lado izquierdo
     borderRightWidth: 2, // Agrega un borde de 1 píxel en el lado derecho
     borderColor: '#123050',
+    zIndex: 1, // Asegúrate de que el botón esté encima de otras vistas
   },
   menuButtonText: {
     color: 'white', // Cambia esto al color que quieras

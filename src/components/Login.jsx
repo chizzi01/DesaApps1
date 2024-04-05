@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet,TouchableOpacity } from "react-native";
 import theme from "../theme";
 
-const Login = () => {
+const Login = ({user}) => {
 
     const styles = StyleSheet.create({
         container: {
@@ -51,6 +51,12 @@ const Login = () => {
             backgroundColor: '#D9D9D9',
             width: '100vw',
         },
+        olvide: {
+            textAlign: 'center',
+            width: '100%',
+            marginBottom: 20,
+            color: '#A8A8A8',
+        },
         button: (isSelected) => ({
             backgroundColor: isSelected ? '#A8A8A8' : '#D9D9D9', // Cambia el color de fondo dependiendo de si el botón está seleccionado
             padding: 10,
@@ -61,6 +67,7 @@ const Login = () => {
     });
     
     const [userType, setUserType] = useState('vecino');
+    const [modalVisible, setModalVisible] = useState(false);
 
     return (
         <View style={styles.formatDiv}>
@@ -98,7 +105,9 @@ const Login = () => {
                     </View>
                 </>
             )}
-
+            <TouchableOpacity>
+            <Text style={styles.olvide}>Olvidé mi Contraseña</Text>
+            </TouchableOpacity>
             <Button style={styles.button} title="Iniciar sesión" />
         </View>
     );
